@@ -38,7 +38,7 @@ if (isset($_POST['gifurl']) && $_POST['giftitle'] !== "") {
 	//gets gif url from post
 	$gifurl = $_POST['gifurl'];
 	$giftitle = $_POST['giftitle'];
-	if (spripos($gifurl, 'gif') !== FALSE) {
+	if (stripos($gifurl, 'gif') !== FALSE) {
 		if (file_exists('gifs')) {
 			//reads and unserializes the gifs file
 			$gifs = unserialize(file_get_contents('gifs'));
