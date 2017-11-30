@@ -38,17 +38,19 @@ if (isset($_POST['gifurl']) && $_POST['giftitle'] !== "") {
 	//gets gif url from post
 	$gifurl = $_POST['gifurl'];
 	$giftitle = $_POST['giftitle'];
-	if (file_exists('gifs')) {
-		//reads and unserializes the gifs file
-		$gifs = unserialize(file_get_contents('gifs'));
-		//adds a new element containing the new gif url and title
-		$gifs[count($gifs)] = [$gifurl, $giftitle];
-	} else {
-		//makes a new array for gifs and adds the gif url and title
-		$gifs[0] = [$gifurl, $giftitle];
+	if (spripos($gifurl, 'gif') !== FALSE) {
+		if (file_exists('gifs')) {
+			//reads and unserializes the gifs file
+			$gifs = unserialize(file_get_contents('gifs'));
+			//adds a new element containing the new gif url and title
+			$gifs[count($gifs)] = [$gifurl, $giftitle];
+		} else {
+			//makes a new array for gifs and adds the gif url and title
+			$gifs[0] = [$gifurl, $giftitle];
+		}
+		file_put_contents('gifs', serialize($gifs));
+		header("Refresh:0");
 	}
-	file_put_contents('gifs', serialize($gifs));
-	header("Refresh:0");
 }
 //checks to see if remove is set and isn't none
 if (isset($_POST['remove']) && $_POST['remove'] !== "None") {
