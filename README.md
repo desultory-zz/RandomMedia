@@ -1,4 +1,4 @@
-# RandomYoutubeVideo
+# RandomMedia
 PHP script that uses the YouTube API and a user defined list to get random youtube videos and play them full screen
 
 
@@ -8,3 +8,4 @@ Once you have your video list made, go to the web directory in your browser and 
 
 You can not use this without a YouTube API key, more information on that here: https://developers.google.com/youtube/registering_an_application
 
+To use the GIF mode which makes a 4x3 grid of gifs, use it the same way but change your index.php file to the gifindex.php file and edit with gifedit.php instead of edit.php
